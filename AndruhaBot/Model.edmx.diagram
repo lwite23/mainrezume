@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="216183469d5c4a62bc3781105f09abf7" Name="Diagram1">
+        <EntityTypeShape EntityType="mainbaseModel.Education" Width="1.5" PointX="0.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="mainbaseModel.Grafik" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="mainbaseModel.Pol" Width="1.5" PointX="0.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="mainbaseModel.Rezume" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="mainbaseModel.Role" Width="1.5" PointX="0.75" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="mainbaseModel.User" Width="1.5" PointX="3" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="mainbaseModel.UserRezume" Width="1.5" PointX="5.25" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="mainbaseModel.Zanaytost" Width="1.5" PointX="0.75" PointY="10.375" IsExpanded="true" />
+        <AssociationConnector Association="mainbaseModel.FK_Rezume_Education" ManuallyRouted="false" />
+        <AssociationConnector Association="mainbaseModel.FK_Rezume_Grafik" ManuallyRouted="false" />
+        <AssociationConnector Association="mainbaseModel.FK_Rezume_Pol" ManuallyRouted="false" />
+        <AssociationConnector Association="mainbaseModel.FK_Rezume_Zanaytost" ManuallyRouted="false" />
+        <AssociationConnector Association="mainbaseModel.FK_UserRezume_Rezume" ManuallyRouted="false" />
+        <AssociationConnector Association="mainbaseModel.FK_User_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="mainbaseModel.FK_UserRezume_User" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,536 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище mainbaseModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Education">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Grafik">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pol">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rezume">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="surname" Type="nvarchar(max)" />
+          <Property Name="patronymic" Type="nvarchar(max)" />
+          <Property Name="job" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="zarplata" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="phone" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="email" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="gorod" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="educationID" Type="int" Nullable="false" />
+          <Property Name="grafikID" Type="int" Nullable="false" />
+          <Property Name="polID" Type="int" Nullable="false" />
+          <Property Name="zanaytostID" Type="int" Nullable="false" />
+          <Property Name="image" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="surname" Type="nvarchar(max)" />
+          <Property Name="patronymic" Type="nvarchar(max)" />
+          <Property Name="email" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="login" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="password" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="roleID" Type="int" Nullable="false" />
+          <Property Name="image" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="UserRezume">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="RezumeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Zanaytost">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Rezume_Education">
+          <End Role="Education" Type="Self.Education" Multiplicity="1" />
+          <End Role="Rezume" Type="Self.Rezume" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Education">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Rezume">
+              <PropertyRef Name="educationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rezume_Grafik">
+          <End Role="Grafik" Type="Self.Grafik" Multiplicity="1" />
+          <End Role="Rezume" Type="Self.Rezume" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grafik">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Rezume">
+              <PropertyRef Name="grafikID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rezume_Pol">
+          <End Role="Pol" Type="Self.Pol" Multiplicity="1" />
+          <End Role="Rezume" Type="Self.Rezume" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pol">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Rezume">
+              <PropertyRef Name="polID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rezume_Zanaytost">
+          <End Role="Zanaytost" Type="Self.Zanaytost" Multiplicity="1" />
+          <End Role="Rezume" Type="Self.Rezume" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zanaytost">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Rezume">
+              <PropertyRef Name="zanaytostID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="roleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRezume_Rezume">
+          <End Role="Rezume" Type="Self.Rezume" Multiplicity="1" />
+          <End Role="UserRezume" Type="Self.UserRezume" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rezume">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="UserRezume">
+              <PropertyRef Name="RezumeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRezume_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="UserRezume" Type="Self.UserRezume" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="UserRezume">
+              <PropertyRef Name="userID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище mainbaseModelContainer">
+          <EntitySet Name="Education" EntityType="Self.Education" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Grafik" EntityType="Self.Grafik" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pol" EntityType="Self.Pol" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rezume" EntityType="Self.Rezume" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserRezume" EntityType="Self.UserRezume" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Zanaytost" EntityType="Self.Zanaytost" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Rezume_Education" Association="Self.FK_Rezume_Education">
+            <End Role="Education" EntitySet="Education" />
+            <End Role="Rezume" EntitySet="Rezume" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rezume_Grafik" Association="Self.FK_Rezume_Grafik">
+            <End Role="Grafik" EntitySet="Grafik" />
+            <End Role="Rezume" EntitySet="Rezume" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rezume_Pol" Association="Self.FK_Rezume_Pol">
+            <End Role="Pol" EntitySet="Pol" />
+            <End Role="Rezume" EntitySet="Rezume" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rezume_Zanaytost" Association="Self.FK_Rezume_Zanaytost">
+            <End Role="Zanaytost" EntitySet="Zanaytost" />
+            <End Role="Rezume" EntitySet="Rezume" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRezume_Rezume" Association="Self.FK_UserRezume_Rezume">
+            <End Role="Rezume" EntitySet="Rezume" />
+            <End Role="UserRezume" EntitySet="UserRezume" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRezume_User" Association="Self.FK_UserRezume_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserRezume" EntitySet="UserRezume" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="mainbaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Education">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Rezume" Relationship="Self.FK_Rezume_Education" FromRole="Education" ToRole="Rezume" />
+        </EntityType>
+        <EntityType Name="Grafik">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Rezume" Relationship="Self.FK_Rezume_Grafik" FromRole="Grafik" ToRole="Rezume" />
+        </EntityType>
+        <EntityType Name="Pol">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Rezume" Relationship="Self.FK_Rezume_Pol" FromRole="Pol" ToRole="Rezume" />
+        </EntityType>
+        <EntityType Name="Rezume">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="surname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="patronymic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="job" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="zarplata" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="gorod" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="educationID" Type="Int32" Nullable="false" />
+          <Property Name="grafikID" Type="Int32" Nullable="false" />
+          <Property Name="polID" Type="Int32" Nullable="false" />
+          <Property Name="zanaytostID" Type="Int32" Nullable="false" />
+          <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Education" Relationship="Self.FK_Rezume_Education" FromRole="Rezume" ToRole="Education" />
+          <NavigationProperty Name="Grafik" Relationship="Self.FK_Rezume_Grafik" FromRole="Rezume" ToRole="Grafik" />
+          <NavigationProperty Name="Pol" Relationship="Self.FK_Rezume_Pol" FromRole="Rezume" ToRole="Pol" />
+          <NavigationProperty Name="Zanaytost" Relationship="Self.FK_Rezume_Zanaytost" FromRole="Rezume" ToRole="Zanaytost" />
+          <NavigationProperty Name="UserRezume" Relationship="Self.FK_UserRezume_Rezume" FromRole="Rezume" ToRole="UserRezume" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="User" Relationship="Self.FK_User_Role" FromRole="Role" ToRole="User" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="surname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="patronymic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="login" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="roleID" Type="Int32" Nullable="false" />
+          <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_User_Role" FromRole="User" ToRole="Role" />
+          <NavigationProperty Name="UserRezume" Relationship="Self.FK_UserRezume_User" FromRole="User" ToRole="UserRezume" />
+        </EntityType>
+        <EntityType Name="UserRezume">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="RezumeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Rezume" Relationship="Self.FK_UserRezume_Rezume" FromRole="UserRezume" ToRole="Rezume" />
+          <NavigationProperty Name="User" Relationship="Self.FK_UserRezume_User" FromRole="UserRezume" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Zanaytost">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Rezume" Relationship="Self.FK_Rezume_Zanaytost" FromRole="Zanaytost" ToRole="Rezume" />
+        </EntityType>
+        <Association Name="FK_Rezume_Education">
+          <End Role="Education" Type="Self.Education" Multiplicity="1" />
+          <End Role="Rezume" Type="Self.Rezume" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Education">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Rezume">
+              <PropertyRef Name="educationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rezume_Grafik">
+          <End Role="Grafik" Type="Self.Grafik" Multiplicity="1" />
+          <End Role="Rezume" Type="Self.Rezume" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grafik">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Rezume">
+              <PropertyRef Name="grafikID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rezume_Pol">
+          <End Role="Pol" Type="Self.Pol" Multiplicity="1" />
+          <End Role="Rezume" Type="Self.Rezume" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pol">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Rezume">
+              <PropertyRef Name="polID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rezume_Zanaytost">
+          <End Role="Zanaytost" Type="Self.Zanaytost" Multiplicity="1" />
+          <End Role="Rezume" Type="Self.Rezume" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zanaytost">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Rezume">
+              <PropertyRef Name="zanaytostID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRezume_Rezume">
+          <End Role="Rezume" Type="Self.Rezume" Multiplicity="1" />
+          <End Role="UserRezume" Type="Self.UserRezume" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rezume">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="UserRezume">
+              <PropertyRef Name="RezumeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="roleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRezume_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="UserRezume" Type="Self.UserRezume" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="UserRezume">
+              <PropertyRef Name="userID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="mainbaseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Education" EntityType="Self.Education" />
+          <EntitySet Name="Grafik" EntityType="Self.Grafik" />
+          <EntitySet Name="Pol" EntityType="Self.Pol" />
+          <EntitySet Name="Rezume" EntityType="Self.Rezume" />
+          <EntitySet Name="Role" EntityType="Self.Role" />
+          <EntitySet Name="User" EntityType="Self.User" />
+          <EntitySet Name="UserRezume" EntityType="Self.UserRezume" />
+          <EntitySet Name="Zanaytost" EntityType="Self.Zanaytost" />
+          <AssociationSet Name="FK_Rezume_Education" Association="Self.FK_Rezume_Education">
+            <End Role="Education" EntitySet="Education" />
+            <End Role="Rezume" EntitySet="Rezume" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rezume_Grafik" Association="Self.FK_Rezume_Grafik">
+            <End Role="Grafik" EntitySet="Grafik" />
+            <End Role="Rezume" EntitySet="Rezume" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rezume_Pol" Association="Self.FK_Rezume_Pol">
+            <End Role="Pol" EntitySet="Pol" />
+            <End Role="Rezume" EntitySet="Rezume" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rezume_Zanaytost" Association="Self.FK_Rezume_Zanaytost">
+            <End Role="Zanaytost" EntitySet="Zanaytost" />
+            <End Role="Rezume" EntitySet="Rezume" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRezume_Rezume" Association="Self.FK_UserRezume_Rezume">
+            <End Role="Rezume" EntitySet="Rezume" />
+            <End Role="UserRezume" EntitySet="UserRezume" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRezume_User" Association="Self.FK_UserRezume_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserRezume" EntitySet="UserRezume" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище mainbaseModelContainer" CdmEntityContainer="mainbaseEntities">
+          <EntitySetMapping Name="Education">
+            <EntityTypeMapping TypeName="mainbaseModel.Education">
+              <MappingFragment StoreEntitySet="Education">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Grafik">
+            <EntityTypeMapping TypeName="mainbaseModel.Grafik">
+              <MappingFragment StoreEntitySet="Grafik">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pol">
+            <EntityTypeMapping TypeName="mainbaseModel.Pol">
+              <MappingFragment StoreEntitySet="Pol">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rezume">
+            <EntityTypeMapping TypeName="mainbaseModel.Rezume">
+              <MappingFragment StoreEntitySet="Rezume">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="surname" ColumnName="surname" />
+                <ScalarProperty Name="patronymic" ColumnName="patronymic" />
+                <ScalarProperty Name="job" ColumnName="job" />
+                <ScalarProperty Name="zarplata" ColumnName="zarplata" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="gorod" ColumnName="gorod" />
+                <ScalarProperty Name="educationID" ColumnName="educationID" />
+                <ScalarProperty Name="grafikID" ColumnName="grafikID" />
+                <ScalarProperty Name="polID" ColumnName="polID" />
+                <ScalarProperty Name="zanaytostID" ColumnName="zanaytostID" />
+                <ScalarProperty Name="image" ColumnName="image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="mainbaseModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="mainbaseModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="surname" ColumnName="surname" />
+                <ScalarProperty Name="patronymic" ColumnName="patronymic" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="roleID" ColumnName="roleID" />
+                <ScalarProperty Name="image" ColumnName="image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRezume">
+            <EntityTypeMapping TypeName="mainbaseModel.UserRezume">
+              <MappingFragment StoreEntitySet="UserRezume">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="RezumeID" ColumnName="RezumeID" />
+                <ScalarProperty Name="userID" ColumnName="userID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Zanaytost">
+            <EntityTypeMapping TypeName="mainbaseModel.Zanaytost">
+              <MappingFragment StoreEntitySet="Zanaytost">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
