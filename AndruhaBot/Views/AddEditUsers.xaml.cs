@@ -33,6 +33,8 @@ namespace AndruhaBot.Views
         {
             InitializeComponent();
             this.WindowTitle = "Добавление пользователя";
+            
+
         }
         public AddEditUsers(User user)
         {
@@ -47,11 +49,51 @@ namespace AndruhaBot.Views
             TBUseremail.Text = currentUser.email;
             TBUserLogin.Text = currentUser.login;
             TBUserPass.Password = currentUser.password;
-            TBUserRole.TabIndex = currentUser.roleID;
+            TBUserRole.Text = currentUser.roleID.ToString();
+            if (currentUser.image != null)
+            {
+                _mainImageData = File.ReadAllBytes(path + currentUser.image);
+                Imageqwe.Source = new ImageSourceConverter().ConvertFrom(_mainImageData) as ImageSource;
+            }
+           
             
         }
+        private void BtnSelectImage_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Multiselect = false;
+            ofd.Filter = "Фото | *.png; *.jpg; *.jpeg";
+            if (ofd.ShowDialog() == true)
+            {
+                img = Path.GetFileName(ofd.FileName);
+                extension = Path.GetExtension(img);
+                selectefFileName = ofd.FileName;
+                _mainImageData = File.ReadAllBytes(ofd.FileName);
+                Imageqwe.Source = new ImageSourceConverter()
+                    .ConvertFrom(_mainImageData) as ImageSource;
+            }
+        }
+
+
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
+            if (img != null)
+            {
+                img = TBUserLogin.Text + extension;
+                var files = Directory.GetFiles(path);
+                int a = 0;
+                while (File.Exists(path + img))
+                {
+                    a++;
+                    img = TBUserLogin.Text + $" ({a})" + extension;
+                }
+                path = path + img;
+                File.Copy(selectefFileName, path);
+            }
+            else if (currentUser.image != null)
+            {
+                img = currentUser.image;
+            }
             if (currentUser == null)
             {
                 User user = new User()
@@ -62,13 +104,15 @@ namespace AndruhaBot.Views
                     email = TBUseremail.Text,
                     login = TBUserLogin.Text,
                     password = TBUserPass.Password,
-                    roleID = TBUserRole.TabIndex,
+                    roleID = Int32.Parse(TBUserRole.Text),
+                    image = img
                 };
                 AppData.db.User.Add(user);
                 AppData.db.SaveChanges();
                 MessageBox.Show("Автор успешно добавлен!");
             }
-            else if (currentUser.name != TBUserName.Text || currentUser.surname != TBUserSurname.Text || currentUser.patronymic != TBUserPatronymic.Text | currentUser.email != TBUseremail.Text | currentUser.login != TBUserLogin.Text | currentUser.password != TBUserPass.Password | currentUser.roleID != TBUserRole.TabIndex)
+            else if (currentUser.image != img || currentUser.name != TBUserName.Text || currentUser.surname != TBUserSurname.Text || currentUser.patronymic != TBUserPatronymic.Text || currentUser.email != TBUseremail.Text || currentUser.login != TBUserLogin.Text || currentUser.password != TBUserPass.Password || currentUser.roleID != TBUserRole.TabIndex)
+                
             {
                 currentUser.name = TBUserName.Text;
                 currentUser.surname = TBUserSurname.Text;
@@ -76,7 +120,8 @@ namespace AndruhaBot.Views
                 currentUser.email = TBUseremail.Text;
                 currentUser.login = TBUserLogin.Text;
                 currentUser.password = TBUserPass.Password;
-                currentUser.roleID = TBUserRole.TabIndex;
+                currentUser.roleID = Int32.Parse(TBUserRole.Text);
+                currentUser.image = img;
                 AppData.db.SaveChanges();
                 MessageBox.Show("Автор успешно обновлен!");
                 currentUser = null;
@@ -103,7 +148,7 @@ namespace AndruhaBot.Views
 
             if (TBUserPass.Password != PBPassAgain.Password)
             {
-                bsave.IsEnabled = false;
+                bsave.IsEnabled = true;
                 TBUserPass.Background = Brushes.LightCoral;
                 TBUserPass.Foreground = Brushes.Red;
                 PBPassAgain.Background = Brushes.LightCoral;
@@ -111,12 +156,12 @@ namespace AndruhaBot.Views
             }
             else if (String.IsNullOrEmpty(TBUserPass.Password.ToString()) || String.IsNullOrEmpty(PBPassAgain.Password.ToString()))
             {
-                bsave.IsEnabled = false;
+                bsave.IsEnabled = true;
                 TBUserPass.Background = default;
                 TBUserPass.Foreground = default;
                 PBPassAgain.Background = default;
                 PBPassAgain.Foreground = default;
-                TBPassStrength.Visibility = Visibility.Collapsed;
+                TBPassStrength.Visibility = Visibility.Visible;
             }
             else
             {
@@ -135,23 +180,9 @@ namespace AndruhaBot.Views
             }
             else
             {
-                TBLoginError.Visibility = Visibility.Collapsed;
+                TBLoginError.Visibility = Visibility.Visible;
             }
         }
-        private void BtnSelectImage_Click(object sender, RoutedEventArgs e)
-        {
-            OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Multiselect = false;
-            ofd.Filter = "Фото | *.png; *.jpg; *.jpeg";
-            if (ofd.ShowDialog() == true)
-            {
-                img = Path.GetFileName(ofd.FileName);
-                extension = Path.GetExtension(img);
-                selectefFileName = ofd.FileName;
-                _mainImageData = File.ReadAllBytes(ofd.FileName);
-                ImagePFP.Source = new ImageSourceConverter()
-                    .ConvertFrom(_mainImageData) as ImageSource;
-            }
-        }
+        
     }
 }

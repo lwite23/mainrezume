@@ -23,6 +23,31 @@ namespace AndruhaBot.Views
         public RezumePage()
         {
             InitializeComponent();
+            Update();
+        }
+        public void Update()
+        {
+            var content = AppData.db.Rezume.ToList();
+            LVRezume.ItemsSource = content;
+        }
+
+        private void BtnEdit_Click(object sender, RoutedEventArgs e)
+        {
+            var button = (Button)sender;
+            var currentRezume = button.DataContext as Rezume;
+            NavigationService.Navigate(new AddEditRezume(currentRezume));
+        }
+
+        private void BtnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            var currentRezume = (sender as Button).DataContext as Rezume;
+            if (MessageBox.Show("Вы уверены что хотите удалить этого автора?", "Внимание",
+                MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+            {
+                AppData.db.Rezume.Remove(currentRezume);
+                AppData.db.SaveChanges();
+                Update();
+            }
         }
     }
 }

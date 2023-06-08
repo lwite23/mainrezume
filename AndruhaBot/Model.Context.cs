@@ -15,11 +15,19 @@ namespace AndruhaBot
     
     public partial class mainbaseEntities : DbContext
     {
+        private static mainbaseEntities _context;
         public mainbaseEntities()
             : base("name=mainbaseEntities")
         {
         }
-    
+        public static mainbaseEntities GetContext()
+        {
+            if (_context == null)
+                _context = new mainbaseEntities ();
+
+            return _context;
+        }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();

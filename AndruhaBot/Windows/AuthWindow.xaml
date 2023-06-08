@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AndruhaBot.Views"
         mc:Ignorable="d"
-        Title="AuthWindow" Height="550" Width="800" Background="LightBlue">
+        Title="Вход/Регистрация" WindowStartupLocation="CenterScreen" Height="900" Width="1800" Background="LightBlue">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="35"/>

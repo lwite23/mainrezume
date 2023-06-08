@@ -10,5 +10,6 @@ namespace AndruhaBot
     internal class AppFrame
     {
         public static Frame frameAuth;
+        public static Frame frameUser;
     }
 }

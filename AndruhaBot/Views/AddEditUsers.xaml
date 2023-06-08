@@ -13,7 +13,7 @@
             <RowDefinition Height="65"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-
+     
         <StackPanel Grid.Row="1"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center"
@@ -60,7 +60,7 @@
                            FontSize="12"
                            Text="Пользователь с таким логином уже существует"/>
                 <TextBlock Text="Пароль"  Grid.Column="0" Grid.Row="6"/>
-                <PasswordBox Grid.Column="1" Grid.Row="6"
+                <PasswordBox  Grid.Column="1" Grid.Row="6"
                             Name="TBUserPass" 
                             Margin="5"
                             PasswordChanged="PBPass_Changed"/>
@@ -87,7 +87,7 @@
 
                 <StackPanel Grid.Column="2" Grid.RowSpan="9" VerticalAlignment="Center" HorizontalAlignment="Center">
                     <Border Margin="5" Width="240" Height="240" BorderBrush="{StaticResource ColorAccent}">
-                        <Image Name="ImagePFP" Source="/Images/default_pfp.png"/>
+                        <Image Name="Imageqwe" Source="/Images/default_pfp.png"/>
                     </Border>
                     <Button Name="BtnSelectImage" Content="Добавить фото" Click="BtnSelectImage_Click"/>
                 </StackPanel>

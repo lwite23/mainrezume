@@ -11,6 +11,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace AndruhaBot.Windows
@@ -51,6 +52,38 @@ namespace AndruhaBot.Windows
                     MainFrame.Navigate(new Views.UserPage());
                     break;
                 case TableName.Rezume:
+                    MainFrame.Navigate(new Views.RezumePage());
+                    break;
+                case TableName.UserRezume:
+                    break;
+                default:
+                    break;
+            }
+        }
+        private void BtnBack_Click(object sender, RoutedEventArgs e)
+        {
+            switch (currentTable)
+            {
+                case TableName.Education:
+                    MainFrame.Navigate(new Views.korotkie(TableName.Education));
+                    break;
+                case TableName.Pol:
+                    MainFrame.Navigate(new Views.korotkie(TableName.Pol));
+                    break;
+                case TableName.Role:
+                    MainFrame.Navigate(new Views.korotkie(TableName.Role));
+                    break;
+                case TableName.Zanaytost:
+                    MainFrame.Navigate(new Views.korotkie(TableName.Zanaytost));
+                    break;
+                case TableName.Grafik:
+                    MainFrame.Navigate(new Views.korotkie(TableName.Grafik));
+                    break;
+                case TableName.User:
+                    MainFrame.Navigate(new Views.UserPage());
+                    break;
+                case TableName.Rezume:
+                    MainFrame.Navigate(new Views.RezumePage());
                     break;
                 case TableName.UserRezume:
                     break;
@@ -96,6 +129,11 @@ namespace AndruhaBot.Windows
             if (MainFrame.CanGoBack && MessageBox.Show("Вы уверены, что хотите вернуться?",
                 "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Exclamation) == MessageBoxResult.Yes)
                 MainFrame.GoBack();
+        }
+
+        private void MainFrame_Navigated(object sender, NavigationEventArgs e)
+        {
+
         }
     }
 }

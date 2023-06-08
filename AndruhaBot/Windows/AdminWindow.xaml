@@ -5,18 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AndruhaBot.Windows"
         mc:Ignorable="d"
-      Title="AdminWindow" Height="450" Width="800" Background="LightBlue">
+      Title="АдминПанель" WindowStartupLocation="CenterScreen" Height="900" Width="1800" Background="LightBlue" WindowStyle="ThreeDBorderWindow"  >
     <Grid>
 
         <Grid.RowDefinitions>
             <RowDefinition Height="35"/>
-            <RowDefinition Height="70"/>
+            <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+
         <Image x:Name="GoBackImage" Grid.Row="0" Width="25" Height="25" HorizontalAlignment="Left" Margin="40 0 0 0" Source="/Icon.ico" MouseLeftButtonUp="GoBackImage_Click"></Image>
-        <TextBlock Grid.Row="0" Text="Окно администратора"/>
-        <ComboBox Text="Выберите фильтр" Name="SelectTable" Grid.Row="1" SelectionChanged="ComboBox_SelectionChanged">
-            <ComboBoxItem Content="Образование"/>
+        <TextBlock Grid.Row="0" Text="Админ-Панель"/>
+        <ComboBox Text="Выберите фильтр" Name="SelectTable" Grid.Row="1" SelectionChanged="ComboBox_SelectionChanged" HorizontalAlignment="Center">
+            <ComboBoxItem Content="Образование ↓"/>
             <ComboBoxItem Content="Пол"/>
             <ComboBoxItem Content="Роли"/>
             <ComboBoxItem Content="Тип занятости"/>
@@ -24,8 +25,13 @@
             <ComboBoxItem Content="Пользователи"/>
             <ComboBoxItem Content="Резюме"/>
         </ComboBox>
+
         <Button Grid.Row="1" HorizontalAlignment="Right" Margin=" 0 0 40 0" Content="Добавить" Name="BtnAdd" Click="DtnAdd_Click"/>
-        <Frame Grid.Row="2" NavigationUIVisibility="Hidden" Name="MainFrame"/>
+        <Button HorizontalAlignment="Left"
+                Margin="23,10,0,10"
+                Content="Назад"
+                Click="BtnBack_Click" Grid.Row="1"/>
+        <Frame Grid.Row="2" NavigationUIVisibility="Hidden" Name="MainFrame" Navigated="MainFrame_Navigated"/>
 
     </Grid>
 </Window>

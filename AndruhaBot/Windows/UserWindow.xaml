@@ -5,56 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AndruhaBot.Windows"
         mc:Ignorable="d"
-        Title="Пользовательский интерфейс" Height="600" Width="1000"
+        Title="Пользовательский интерфейс"  Height="900" Width="1800"
         Background="LightBlue" ResizeMode="NoResize" ShowInTaskbar="False" WindowStartupLocation="CenterScreen">
     <Grid>
+
         <Grid.RowDefinitions>
             <RowDefinition Height="70"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="25"/>
         </Grid.RowDefinitions>
+        <Button HorizontalAlignment="Left"
+                Margin="23,10,0,10"
+                Content="Назад"
+                Click="BtnBack_Click" Grid.Row="0"/>
+        
         <TextBlock FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="0" Text="Резюме"/>
-        <!--<Frame Grid.Row="1" NavigationUIVisibility="Hidden" Name="UserFrame"/>-->
+        <Frame Grid.Row="1" NavigationUIVisibility="Hidden" Name="UserFrame"/>
 
-        <ListView Grid.Row="1" Name="BookList" Width="1000">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Vertical" VerticalAlignment="Center" Height="400" Width="250 ">
-                        <Image Height="90" 
-                               Width="90"
-                               Source="/Images/default_pfp.png"
-                               Margin="0 0 20 0"/>
-                        <Border BorderBrush="{StaticResource AnotherColor}" BorderThickness="2">
-                            <StackPanel>
-                                <StackPanel Orientation="Horizontal" >
-                                    <Label Foreground="{StaticResource ColorFont}" Content="{Binding User.surname}"/>
-                                    <!--<Label Foreground="{StaticResource ColorFont}" Content="|"/>-->
-                                    <Label Foreground="{StaticResource ColorFont}" Content="{Binding User.name}"/>
-                                    <!--<Label Foreground="{StaticResource ColorFont}" Content="|"/>-->
-                                    <Label Foreground="{StaticResource ColorFont}" Content="{Binding User.patronymic}"/>
-                                </StackPanel>
-
-                                <Label FontSize="24" Content="{Binding Rezume.gorod}"/>
-                            </StackPanel>
-                        </Border>
-                        <Border BorderBrush="{StaticResource AnotherColor}" BorderThickness="2" Margin="20 0 20 0">
-                            <StackPanel Width="250">
-                                <TextBlock Text="{Binding Pol.name}" TextWrapping="Wrap" Name="TBDescription"/>
-
-                            </StackPanel>
-                        </Border>
-
-                        <Border BorderBrush="{StaticResource AnotherColor}" BorderThickness="2" Margin="0,0,20,0">
-                            <StackPanel HorizontalAlignment="Right">
-                                <Label Content="{Binding Education.name}"/>
-                                <Label Content="{Binding Rezume.name}"/>
-                                <!--<Label Content="{Binding State.name}"/>-->
-                                <Button Content="Подробнее" Click="BtnInfo_Click"/>
-                            </StackPanel>
-                        </Border>
-                    </StackPanel>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
     </Grid>
 </Window>

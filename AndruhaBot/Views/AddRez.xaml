@@ -1,19 +1,22 @@
-﻿<Page x:Class="AndruhaBot.Views.AddEditRezume"
+﻿<Page x:Class="AndruhaBot.Views.AddRez"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:AndruhaBot.Views"
       mc:Ignorable="d" 
-          d:DesignHeight="550" d:DesignWidth="800"
+       d:DesignHeight="550" d:DesignWidth="800"
       Title="AddEditAuthorsPage" Background="LightBlue">
 
     <Grid>
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="65"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-       
+        
+        
+
 
         <StackPanel Grid.Row="1"
                     VerticalAlignment="Center"
@@ -26,6 +29,7 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
+                
                 <Grid.RowDefinitions>
                     <RowDefinition />
                     <RowDefinition />
@@ -45,47 +49,39 @@
                     <RowDefinition />
                 </Grid.RowDefinitions>
                 <TextBlock Text="Имя"  Grid.Column="0" Grid.Row="0" />
-                <TextBox Name="TBRezumeName"  Grid.Column="1" Grid.Row="0"/>
+                <TextBox Name="TBRezumeName"  Grid.Column="1" Grid.Row="0" TextChanged="TBRezumeName_TextChanged" Background="#FFC5CCDC" IsReadOnlyCaretVisible="True" IsEnabled="False"/>
                 <TextBlock Text="Фамилия"  Grid.Column="0" Grid.Row="1"/>
-                <TextBox Name="TBRezumeSurname"  Grid.Column="1" Grid.Row="1"/>
+                <TextBox Name="TBRezumeSurname"  Grid.Column="1" Grid.Row="1" IsEnabled="False"/>
 
                 <TextBlock Text="Отчество"   Grid.Column="0" Grid.Row="2"/>
-                <TextBox Name="TBRezumePatronymic"   Grid.Column="1" Grid.Row="2"/>
+                <TextBox Name="TBRezumePatronymic"   Grid.Column="1" Grid.Row="2" IsEnabled="False"/>
                 <TextBlock Text="Город"   Grid.Column="0" Grid.Row="3"/>
                 <TextBox
                     Name="TBRezumeGor" 
                     Grid.Column="1" 
-                    Grid.Row="3"/>
+                    Grid.Row="3" IsEnabled="False"/>
 
                 <TextBlock Text="Должность"  Grid.Column="0" Grid.Row="4"/>
-                <TextBox Name="TBRezumeD"   Grid.Column="1" Grid.Row="4"/>
+                <TextBox Name="TBRezumeD"   Grid.Column="1" Grid.Row="4" IsEnabled="False"/>
                 <TextBlock Text="Желаемая зарплата"  Grid.Column="0" Grid.Row="5"/>
-                <TextBox Name="TBRezumeZ"   Grid.Column="1" Grid.Row="5"/>
+                <TextBox Name="TBRezumeZ"   Grid.Column="1" Grid.Row="5" IsEnabled="False"/>
                 <TextBlock Text="Номер телефона"  Grid.Column="0" Grid.Row="6"/>
-                <TextBox Name="TBRezumeTel"   Grid.Column="1" Grid.Row="6"/>
+                <TextBox Name="TBRezumeTel"   Grid.Column="1" Grid.Row="6" IsEnabled="False"/>
                 <TextBlock Text="Почта"   Grid.Column="0" Grid.Row="7"/>
-                <TextBox Name="TBRezumeP"   Grid.Column="1" Grid.Row="7"/>
+                <TextBox Name="TBRezumeP"   Grid.Column="1" Grid.Row="7" IsEnabled="False"/>
                 <TextBlock Text="Образование"   Grid.Column="0" Grid.Row="8"/>
-                <TextBox Name="TBRezumeOb"   Grid.Column="1" Grid.Row="8"/>
+                <TextBox Name="TBRezumeOb"   Grid.Column="1" Grid.Row="8" IsEnabled="False"/>
                 <TextBlock Text="График"   Grid.Column="0" Grid.Row="9"/>
-                <TextBox Name="TBRezumeGraf"   Grid.Column="1" Grid.Row="9"/>
+                <TextBox Name="TBRezumeGraf"   Grid.Column="1" Grid.Row="9" IsEnabled="False"/>
                 <TextBlock Text="Пол"   Grid.Column="0" Grid.Row="10"/>
-                <TextBox Name="TBRezumePol"   Grid.Column="1" Grid.Row="10"/>
+                <TextBox Name="TBRezumePol"   Grid.Column="1" Grid.Row="10" IsEnabled="False"/>
                 <TextBlock Text="Тип занятости"   Grid.Column="0" Grid.Row="11"/>
-                <TextBox Name="TBRezumeZan"   Grid.Column="1" Grid.Row="11"/>
-                <Button Grid.ColumnSpan="3"
-                    Name="bsave"
-                    Grid.Row="14"                  
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
-                    Click="BtnSave_Click"
-                    Content="Сохранить"/>
-
+                <TextBox Name="TBRezumeZan"   Grid.Column="1" Grid.Row="11" IsEnabled="False"/>
                 <StackPanel Grid.Column="2" Grid.RowSpan="9" VerticalAlignment="Center" HorizontalAlignment="Center">
                     <Border Margin="5" Width="240" Height="240" BorderBrush="{StaticResource ColorAccent}">
                         <Image Name="Imageqwe" Source="/Images/default_pfp.png"/>
                     </Border>
-                    <Button Name="BtnSelectImage" Content="Добавить фото" Click="BtnSelectImage_Click"/>
+                   
                 </StackPanel>
             </Grid>
         </StackPanel>

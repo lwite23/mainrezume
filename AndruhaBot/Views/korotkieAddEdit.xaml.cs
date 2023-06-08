@@ -60,6 +60,7 @@ namespace AndruhaBot.Views
                     break;
             }
         }
+       
         public korotkieAddEdit(TableName tn, Education ed = null,  Pol pl = null, Role rl = null, Zanaytost zn = null, Grafik gr = null)
         {
             this.currentTable = tn;

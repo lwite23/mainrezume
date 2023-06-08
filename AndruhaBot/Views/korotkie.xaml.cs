@@ -63,6 +63,7 @@ namespace AndruhaBot.Views
                     break;
             }
         }
+        
 
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {

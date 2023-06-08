@@ -9,6 +9,7 @@
       Title="AddEditShortPage" Background="LightBlue">
 
     <Grid>
+       
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                 <TextBlock Name="TBName" Text="Введите название"/>

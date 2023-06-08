@@ -19,22 +19,22 @@ namespace AndruhaBot.Windows
     /// </summary>
     public partial class UserWindow : Window
     {
+
         public UserWindow()
         {
             InitializeComponent();
-            try
-            {
-                BookList.ItemsSource = AppData.db.Rezume.Take(4).ToList();
-                var cuurentBook = BookList.SelectedItem as Rezume;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Что-то пошло не так!", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-            }
+            AppFrame.frameUser = UserFrame;
+            UserFrame.Navigate(new Views.Main());
+            
         }
         private void BtnInfo_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void BtnBack_Click(object sender, RoutedEventArgs e)
+        {
+            UserFrame.GoBack();
         }
     }
 }
