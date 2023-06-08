@@ -35,19 +35,20 @@ namespace AndruhaBot.Windows
                 case TableName.Education:
                     MainFrame.Navigate(new Views.korotkie(TableName.Education));
                     break;
-                case TableName.Grafik:
-                    MainFrame.Navigate(new Views.korotkie(TableName.Grafik));
-                    break;
                 case TableName.Pol:
                     MainFrame.Navigate(new Views.korotkie(TableName.Pol));
+                    break;
+                case TableName.Role:
+                    MainFrame.Navigate(new Views.korotkie(TableName.Role));
                     break;
                 case TableName.Zanaytost:
                     MainFrame.Navigate(new Views.korotkie(TableName.Zanaytost));
                     break;
-                case TableName.Role:
-                    MainFrame.Navigate(new Views.korotkie());
+                case TableName.Grafik:
+                    MainFrame.Navigate(new Views.korotkie(TableName.Grafik));
                     break;
                 case TableName.User:
+                    MainFrame.Navigate(new Views.UserPage());
                     break;
                 case TableName.Rezume:
                     break;
@@ -62,25 +63,26 @@ namespace AndruhaBot.Windows
         {
             switch (currentTable)
             {
-                case TableName.Rezume:
-                    MainFrame.Navigate(new Views.AddEditRezume());
-                    break;
                 case TableName.Education:
                     MainFrame.Navigate(new Views.korotkieAddEdit(TableName.Education));
-                    break;
-                case TableName.Grafik:
-                    MainFrame.Navigate(new Views.korotkieAddEdit(TableName.Grafik));
-                    break;
-                case TableName.Role:
-                    MainFrame.Navigate(new Views.korotkieAddEdit(TableName.Role));
                     break;
                 case TableName.Pol:
                     MainFrame.Navigate(new Views.korotkieAddEdit(TableName.Pol));
                     break;
+                case TableName.Role:
+                    MainFrame.Navigate(new Views.korotkieAddEdit(TableName.Role));
+                    break;
                 case TableName.Zanaytost:
                     MainFrame.Navigate(new Views.korotkieAddEdit(TableName.Zanaytost));
                     break;
+                case TableName.Grafik:
+                    MainFrame.Navigate(new Views.korotkieAddEdit(TableName.Grafik));
+                    break;
                 case TableName.User:
+                    MainFrame.Navigate(new Views.AddEditUsers());
+                    break;
+                case TableName.Rezume:
+                    MainFrame.Navigate(new Views.AddEditRezume());
                     break;
                 case TableName.UserRezume:
                     break;

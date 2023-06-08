@@ -22,6 +22,19 @@ namespace AndruhaBot.Windows
         public UserWindow()
         {
             InitializeComponent();
+            try
+            {
+                BookList.ItemsSource = AppData.db.Rezume.Take(4).ToList();
+                var cuurentBook = BookList.SelectedItem as Rezume;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Что-то пошло не так!", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
+        }
+        private void BtnInfo_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

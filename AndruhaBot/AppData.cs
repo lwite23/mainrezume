@@ -9,13 +9,13 @@ namespace AndruhaBot
     public enum TableName
     {
         Education,
-        Grafik,
         Pol,
-        Rezume,
         Role,
+        Zanaytost,
+        Grafik,
         User,
-        UserRezume,
-        Zanaytost
+        Rezume,
+        UserRezume
     }
     public static class AppData
     { 
