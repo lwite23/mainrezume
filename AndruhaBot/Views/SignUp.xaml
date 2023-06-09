@@ -53,6 +53,7 @@
                     Name="TBemail" 
                     Grid.Column="1" 
                     Grid.Row="3"/>
+                
 
                 <TextBlock Text="Логин"  Grid.Column="0" Grid.Row="4"/>
                 <TextBox Name="TBLogin"  TextChanged="TBLogin_TextChanged" Grid.Column="1" Grid.Row="4"/>

@@ -44,7 +44,7 @@ namespace AndruhaBot.Views
             {
                 MessageBox.Show("Пользователь с таким логином уже существует!");
             }
-            try
+            else
             {
                 if (img != null)
                 {
@@ -74,10 +74,7 @@ namespace AndruhaBot.Views
                 MessageBox.Show("Пользователь успешно добавлен!");
                 NavigationService.GoBack();
             }
-            catch
-            {
-                MessageBox.Show("Ошибка в добавлении данных!");
-            }
+           
         }
 
         private void PBPass_Changed(object sender, RoutedEventArgs e)

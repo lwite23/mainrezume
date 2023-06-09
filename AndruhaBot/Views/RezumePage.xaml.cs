@@ -41,7 +41,7 @@ namespace AndruhaBot.Views
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
             var currentRezume = (sender as Button).DataContext as Rezume;
-            if (MessageBox.Show("Вы уверены что хотите удалить этого автора?", "Внимание",
+            if (MessageBox.Show("Вы уверены что хотите удалить Резюме?", "Внимание",
                 MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
             {
                 AppData.db.Rezume.Remove(currentRezume);
