@@ -28,6 +28,8 @@ namespace AndruhaBot.Views
         public string path = Path.Combine(Directory.GetParent(Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).FullName)).FullName, @"Images\");
         public string selectefFileName;
         public string extension = "";
+        Regex emailCheck = new Regex(@"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$");
+        MatchCollection matches;
         public SignUp()
         {
             InitializeComponent();
@@ -40,7 +42,13 @@ namespace AndruhaBot.Views
 
         private void BtnReg_Click(object sender, RoutedEventArgs e)
         {
-            if (AppData.db.User.Count(x => x.login == TBLogin.Text) > 0)
+            matches = emailCheck.Matches(TBemail.Text);
+            if (matches.Count == 0)
+            {
+                MessageBox.Show("Неверно указана почта");
+                return;
+            }
+                if (AppData.db.User.Count(x => x.login == TBLogin.Text) > 0)
             {
                 MessageBox.Show("Пользователь с таким логином уже существует!");
             }

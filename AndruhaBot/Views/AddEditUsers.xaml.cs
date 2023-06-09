@@ -29,6 +29,7 @@ namespace AndruhaBot.Views
         public string selectefFileName;
         public string extension = "";
         public User currentUser;
+        
         public AddEditUsers()
         {
             InitializeComponent();
