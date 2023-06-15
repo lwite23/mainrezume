@@ -12,7 +12,6 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="35"/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" Text="Авторизация/Регистрация" FontSize="80"/>
         <Frame Grid.Row="1" NavigationUIVisibility="Hidden" Name="AuthFrame"/>
     </Grid>
 </Window>

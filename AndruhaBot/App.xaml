@@ -5,13 +5,15 @@
              StartupUri="Windows/AuthWindow.xaml">
     <Application.Resources>
         <SolidColorBrush x:Key="ColorAccent" Color="#FF6699DC"/>
-        <SolidColorBrush x:Key="ColorPrimary" Color="#FF9FB4D6"/>
+        <SolidColorBrush x:Key="ColorPrimary" Color="White"/>
         <SolidColorBrush x:Key="ColorNotWhite" Color="#FFC5CCDC"/>
-        <SolidColorBrush x:Key="ColorFont" Color="#FF111D5F"/>
+        <SolidColorBrush x:Key="ColorFont" Color="Black"/>
         <SolidColorBrush x:Key="AnotherColor" Color="#FF3857B5"/>
+        
+        <SolidColorBrush x:Key="Second" Color="Blue"/>
         <Style TargetType="Button">
             <Setter Property="FontSize" Value="16"/>
-            <Setter Property="FontFamily" Value="Comic Sans MS"/>
+
             <Setter Property="Width" Value="165"/>
             <Setter Property="Height" Value="30"/>
             <Setter Property="Margin" Value="5"/>
@@ -19,7 +21,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
-                        <Border Background="{TemplateBinding Background}">
+                        <Border CornerRadius="5" Background="{TemplateBinding Background}">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
                     </ControlTemplate>
@@ -45,23 +47,35 @@
 
         </Style>
         <Style TargetType="TextBox">
+            <Setter Property="Margin" Value="0 5"/>
             <Setter Property="Width" Value="175"/>
-            <Setter Property="Height" Value="23"/>
-            <Setter Property="Background" Value="{StaticResource ColorNotWhite}"/>
-            <Setter Property="Margin" Value="5"/>
-            <Setter Property="BorderBrush" Value="{StaticResource ColorFont}"/>
+            <Setter Property="Height" Value="25"/>
+            <Setter Property="Background" Value="{DynamicResource ColorPrimary}"/>
+            <Setter Property="BorderThickness" Value="2" />
+            <Setter Property="BorderBrush" Value="{DynamicResource Second}"/>
+            <Setter Property="Padding" Value="6 3" />
+            <Setter Property="Foreground" Value="{DynamicResource ColorFont}"/>
+            <Setter Property="AllowDrop" Value="True"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="VerticalContentAlignment" Value="Top" />
+           
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="true">
-                    <Setter Property="BorderBrush" Value="{StaticResource ColorAccent}"/>
+                    <Setter Property="BorderBrush" Value="{DynamicResource ColorAccent}"/>
                 </Trigger>
             </Style.Triggers>
         </Style>
         <Style TargetType="PasswordBox">
             <Setter Property="Width" Value="175"/>
-            <Setter Property="Height" Value="23"/>
-            <Setter Property="Background" Value="{StaticResource ColorNotWhite}"/>
-            <Setter Property="Margin" Value="5"/>
-            <Setter Property="BorderBrush" Value="{StaticResource ColorFont}"/>
+            <Setter Property="Height" Value="25"/>
+            <Setter Property="Background" Value="{DynamicResource ColorPrimary}"/>
+            <Setter Property="BorderThickness" Value="2" />
+            <Setter Property="BorderBrush" Value="{DynamicResource Second}"/>
+            <Setter Property="Padding" Value="6 3" />
+            <Setter Property="Cursor" Value="IBeam"/>
+            <Setter Property="Foreground" Value="{DynamicResource ColorFont}"/>
+            <Setter Property="AllowDrop" Value="True"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="true">
                     <Setter Property="BorderBrush" Value="{StaticResource ColorAccent}"/>
@@ -75,7 +89,7 @@
             <Setter Property="FontSize" Value="16"/>
             <Setter Property="FontFamily" Value="Comic Sans MS"/>
             <Setter Property="Height" Value="40"/>
-            <Setter Property="Width" Value="Auto"/>
+            <Setter Property="Width" Value="200"/>
             <Setter Property="Background" Value="{StaticResource AnotherColor}"/>
             <Setter Property="Foreground" Value="cyan"/>
             <Setter Property="Template">
