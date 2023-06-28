@@ -135,5 +135,13 @@ namespace AndruhaBot.Windows
         {
 
         }
+
+        private void BtnExit(object sender, RoutedEventArgs e)
+        {
+            Windows.AuthWindow authWindow = new Windows.AuthWindow();
+            authWindow.Show();
+            this.Close();
+            MessageBox.Show("Вы успешно вышли из аккаунта");
+        }
     }
 }

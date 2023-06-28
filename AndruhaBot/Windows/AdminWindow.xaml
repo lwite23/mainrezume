@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AndruhaBot.Windows"
         mc:Ignorable="d"
-      Title="АдминПанель" WindowStartupLocation="CenterScreen" Height="900" Width="1800" Background="LightBlue" WindowStyle="ThreeDBorderWindow"  >
+      Title="АдминПанель" WindowStartupLocation="CenterScreen" Height="800" Width="1200" Background="LightBlue" WindowStyle="ThreeDBorderWindow"  >
     <Grid>
 
         <Grid.RowDefinitions>
@@ -32,6 +32,10 @@
                 Content="Назад"
                 Click="BtnBack_Click" Grid.Row="1"/>
         <Frame Grid.Row="2" NavigationUIVisibility="Hidden" Name="MainFrame" Navigated="MainFrame_Navigated"/>
+        <Button HorizontalAlignment="Left"
+            Margin="220,10,0,0"
+            Content="Выйти"
+            Click="BtnExit" Grid.Row="1" Height="30" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

@@ -245,6 +245,7 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\default_pfp.png" />
+    <Resource Include="Images\logo.png" />
     <Content Include="Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Model.Context.cs</LastGenOutput>

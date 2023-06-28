@@ -20,14 +20,11 @@
                     <Border BorderBrush="{StaticResource ColorAccent}">
                         <Grid HorizontalAlignment="Center">
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Width="150" Text="{Binding name}" TextAlignment="Center"/>
-                                <TextBlock Width="150" Text="{Binding surname}"  TextAlignment="Center"/>
-                                <TextBlock Width="150" Text="{Binding patronymic}" TextAlignment="Center" />
-                                <TextBlock Width="150" Text="{Binding email}" TextAlignment="Center"/>
+
                                 <TextBlock Width="150" Text="{Binding login}"  TextAlignment="Center"/>
-                                <TextBlock Width="150" Text="{Binding password}" TextAlignment="Center" />
+                                
                                 <TextBlock Width="150" Text="{Binding Role.name}"  TextAlignment="Center"/>
-                                <TextBlock Width="150" Text="{Binding image}" TextAlignment="Center" />
+                                
                                 
                                 <Button Width="150" Name="BtnEdit" HorizontalAlignment="Right" Click="BtnEdit_Click" Content="Редактировать"/>
                                 <Button Width="150" Name="BtnDelete" HorizontalAlignment="Right"  Click="BtnDelete_Click" Content="Удалить"/>

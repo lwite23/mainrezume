@@ -28,13 +28,14 @@ namespace AndruhaBot.Views
         public void Update()
         {
             var content = AppData.db.Rezume.ToList();
+
             LVMain.ItemsSource = content;
         }
         private void BtnCheck_Click(object sender, RoutedEventArgs e)
         {
             var button = (Button)sender;
             var currentRezume = button.DataContext as Rezume;
-            NavigationService.Navigate(new AddRez(currentRezume));
+            NavigationService.Navigate(new AddEditRezume(currentRezume));
         }
     }
 }

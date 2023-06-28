@@ -36,6 +36,7 @@ namespace AndruhaBot.Views
                 }
                 else
                 {
+                    App.CurrentUser = currentUser;
                     if (currentUser.login.Equals(TBLogin.Text) && currentUser.password.Equals(TBPassword.Text))
                     {
                         if (currentUser.roleID == 1)

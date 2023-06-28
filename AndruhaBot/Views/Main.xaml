@@ -21,23 +21,11 @@
                         <Grid HorizontalAlignment="Center">
 
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Width="150" Text="{Binding image}" TextAlignment="Center" />
-                                <StackPanel>
                                 <TextBlock Width="150" Text="{Binding name}" TextAlignment="Center"/>
                                 <TextBlock Width="150" Text="{Binding surname}"  TextAlignment="Center"/>
                                 <TextBlock Width="150" Text="{Binding patronymic}" TextAlignment="Center" />
-                                </StackPanel>
-                                <StackPanel>
                                 <TextBlock Width="150" Text="{Binding job}" TextAlignment="Center"/>
                                 <TextBlock Width="150" Text="{Binding gorod}"  TextAlignment="Center"/>
-                                <TextBlock Width="150" Text="{Binding Education.name}" TextAlignment="Center" />
-                                </StackPanel>
-                                <StackPanel>
-                                <TextBlock Width="150" Text="{Binding Pol.name}" TextAlignment="Center" />
-                                <TextBlock Width="150" Text="{Binding Zanaytost.name}" TextAlignment="Center" />
-                                </StackPanel>
-
-
                                 <Button Width="150" Name="BtnEdit" HorizontalAlignment="Right" Click="BtnCheck_Click" Content="Посмотреть"/>
                             </StackPanel>
                         </Grid>
@@ -45,5 +33,10 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <TextBlock FontSize="12" VerticalAlignment="Top" HorizontalAlignment="Left" Text="Имя" Width="150" Margin="87,35,0,0"></TextBlock>
+        <TextBlock FontSize="12" VerticalAlignment="Top" HorizontalAlignment="Left" Text="Фамилия" Width="150" Margin="237,31,0,0"></TextBlock>
+        <TextBlock FontSize="12" VerticalAlignment="Top" HorizontalAlignment="Left" Text="Отчество" Width="150" Margin="387,31,0,0"></TextBlock>
+        <TextBlock FontSize="12" VerticalAlignment="Top" HorizontalAlignment="Left" Text="Должность" Width="150" Margin="564,31,0,0"></TextBlock>
+        <TextBlock FontSize="12" VerticalAlignment="Top" HorizontalAlignment="Left" Text="Город" Width="150" Margin="719,31,0,0"></TextBlock>
     </Grid>
 </Page>
